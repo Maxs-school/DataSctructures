@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace MyStructures;
 
-public class LinkedList<T>: IEnumerable {
+public class LinkedList<T>: IEnumerable<T> {
     private LinkedItem? first;
     private LinkedItem? last;
 
@@ -41,6 +41,22 @@ public class LinkedList<T>: IEnumerable {
 
         last = linkedItem;
         Count++;
+    }
+
+    /// <summary>
+    /// Adds all the values from one enumerator to the end of this list
+    /// </summary>
+    /// <param name="enumer">Any enumerable to add from</param>
+    public void AddFrom(IEnumerable<T> enumer) {
+        foreach (var elem in enumer) {
+            this.Add(elem);
+        }
+    }
+    public void AddFrom(LinkedList<T> linkedList) {
+        this.last.after = linkedList.first;
+        linkedList.first = this.last;
+
+        this.last = linkedList.last;
     }
 
     public void Clear() {
