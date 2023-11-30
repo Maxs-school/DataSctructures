@@ -15,7 +15,7 @@ public class CustomList<T>: IList<T> {
 
     public CustomList(T[] items) {
         if (items.Length > 4) {
-            // Gives you the minimum doublings to reach the capacity of the inputed array
+            // Gives you the root doublings to reach the capacity of the inputed array
             Capacity = MinimumDoubledCount(items.Length);
         }
         else {
