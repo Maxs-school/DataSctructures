@@ -6,7 +6,7 @@
 /// Stores items, along with a Priority for each Item
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class PriorityQueue<T> {
+public class PriorityQueue<T> where T : IComparable {
     // Naive implementation - store items along with their Priority
     private IList<PrioritizedItem> contents = new MyStructures.CustomList<PrioritizedItem>();
 
@@ -66,13 +66,17 @@ public class PriorityQueue<T> {
     /// Private struct only used by the Priority queue
     /// --> Structs are value types, not reference types
     /// </summary>
-    internal struct PrioritizedItem {
+    internal struct PrioritizedItem : IComparable {
         public T Item;
         public int Priority;
 
         public PrioritizedItem(T value, int priority) {
             this.Item = value;
             this.Priority = priority;
+        }
+
+        public int CompareTo(object? obj) {
+            return Item.CompareTo(obj);
         }
     }
 }

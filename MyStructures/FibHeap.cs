@@ -5,6 +5,11 @@ public class FibHeap<T> where T : IComparable {
 
     private HeapTree minimumElement;
 
+
+    public FibHeap() {
+        throw NotImplementedException("NEED TO DO");
+    }
+
     public void Insert(T element) {
         HeapTree tree = new HeapTree(element);
         this.treelist.Add(tree);
@@ -33,7 +38,8 @@ public class FibHeap<T> where T : IComparable {
         this.treelist.AddFrom(tree);
     }
 
-    public void RemoveMin() {
+    public T RemoveMin() {
+        T min = minimumElement.root;
         var childen = minimumElement.RemoveParent();
 
         if (childen != null) {
@@ -52,7 +58,6 @@ public class FibHeap<T> where T : IComparable {
         HeapTree?[] degreeList = new HeapTree?[maxDegree];
         bool changed;
         do {
-
             changed = false;
             foreach (HeapTree tree in treelist) {
                 if (degreeList[tree.degree] != null) {
@@ -69,6 +74,8 @@ public class FibHeap<T> where T : IComparable {
 
             }
         } while (changed);
+
+        return min;
     }
 
     internal class HeapTree {
