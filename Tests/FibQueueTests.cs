@@ -8,7 +8,7 @@ public class FibQueueTests {
 
     [TestMethod]
     public void TestQueueing() {
-        FibQueue<int> heap = new FibHeap<int>();
+        FibQueue<int> heap = new FibQueue<int>();
         CustomList<int> list = new CustomList<int>();
 
         // Insert them

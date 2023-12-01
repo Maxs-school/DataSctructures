@@ -3,17 +3,14 @@ namespace MyStructures;
 public class FibHeap<T> where T : IComparable {
     LinkedList<HeapTree> treelist = new LinkedList<HeapTree>();
 
-    private HeapTree minimumElement;
-
-
-    public FibHeap() {
-        throw NotImplementedException("NEED TO DO");
-    }
+    private HeapTree? minimumElement;
 
     public void Insert(T element) {
         HeapTree tree = new HeapTree(element);
         this.treelist.Add(tree);
-        if (element.CompareTo(this.minimumElement.root) < 0) {
+
+
+        if (this.minimumElement == null || element.CompareTo(this.minimumElement.root) < 0) {
             this.minimumElement = tree;
         }
     }
@@ -84,7 +81,9 @@ public class FibHeap<T> where T : IComparable {
 
         private LinkedList<HeapTree> children;
         public HeapTree(T element) {
-            throw new NotImplementedException("HEAP TREE NOT IMPLEMENTED");
+            this.root = element;
+            this.degree = 0;
+            this.children = new LinkedList<HeapTree>();
         }
 
         public LinkedList<HeapTree>? RemoveParent() {
@@ -98,6 +97,7 @@ public class FibHeap<T> where T : IComparable {
 
         public void Merge(HeapTree tree) {
             this.children.Add(tree);
+            this.degree++;
         }
     }
 }

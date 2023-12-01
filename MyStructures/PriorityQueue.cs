@@ -75,8 +75,13 @@ public class PriorityQueue<T> where T : IComparable {
             this.Priority = priority;
         }
 
-        public int CompareTo(object? obj) {
-            return Item.CompareTo(obj);
+        public int CompareTo(object? item) {
+            if (item is PrioritizedItem prioritizedItem) {
+                return this.Priority - prioritizedItem.Priority;
+            }
+
+            return Item.CompareTo(item);
+
         }
     }
 }
