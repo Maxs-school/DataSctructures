@@ -10,7 +10,7 @@ public class FibHeap<T> where T : IComparable {
         this.treelist.Add(tree);
 
 
-        if (this.minimumElement == null || element.CompareTo(this.minimumElement.root) < 0) {
+        if (this.minimumElement == null || element.CompareTo(this.minimumElement.Root) < 0) {
             this.minimumElement = tree;
         }
     }
@@ -21,7 +21,16 @@ public class FibHeap<T> where T : IComparable {
     /// <param name="heap">The fibonacci heap to merge with</param>
     public void Merge(FibHeap<T> heap) {
         this.Merge(heap.treelist);
-        if ( heap.minimumElement.root.CompareTo(this.minimumElement.root) < 0) {
+
+        if (heap.minimumElement == null) {
+            throw new NullReferenceException("Cannot merge with an empty heap");
+        }
+
+        if (this.minimumElement == null) {
+            throw new NullReferenceException("Cannot merge with an empty heap");
+        }
+
+        if (heap.minimumElement.Root.CompareTo(this.minimumElement.Root) < 0) {
             this.minimumElement = heap.minimumElement;
         }
     }
@@ -36,7 +45,12 @@ public class FibHeap<T> where T : IComparable {
     }
 
     public T RemoveMin() {
-        T min = minimumElement.root;
+        if (minimumElement == null) {
+            throw new InvalidOperationException("Cannot remove from an empty heap");
+
+        }
+
+        T min = minimumElement.Root;
         var childen = minimumElement.RemoveParent();
 
         if (childen != null) {
@@ -46,8 +60,8 @@ public class FibHeap<T> where T : IComparable {
         HeapTree smallest = treelist[0];
         int maxDegree = 0;
         foreach (var tree in this.treelist) {
-            maxDegree = Math.Max(maxDegree, tree.degree);
-            if (tree.root.CompareTo(smallest.root) < 0) {
+            maxDegree = Math.Max(maxDegree, tree.Degree);
+            if (tree.Root.CompareTo(smallest.Root) < 0) {
                 smallest = tree;
             }
         }
@@ -57,16 +71,17 @@ public class FibHeap<T> where T : IComparable {
         do {
             changed = false;
             foreach (HeapTree tree in treelist) {
-                if (degreeList[tree.degree] != null) {
-                    if (tree == degreeList[tree.degree]) {
+                if (degreeList[tree.Degree] != null) {
+                    if (tree == degreeList[tree.Degree]) {
                         continue;
                     }
 
-                    tree.Merge(degreeList[tree.degree]);
+                    // It's really dumb that this "non-nullable" type is giving a warning about being null possibly
+                    tree.Merge(degreeList[tree.Degree]);
                     changed = true;
                 }
                 else {
-                    degreeList[tree.degree] = tree;
+                    degreeList[tree.Degree] = tree;
                 }
 
             }
@@ -76,13 +91,13 @@ public class FibHeap<T> where T : IComparable {
     }
 
     internal class HeapTree {
-        public T root;
-        public int degree;
+        public T Root;
+        public int Degree;
 
         private LinkedList<HeapTree> children;
         public HeapTree(T element) {
-            this.root = element;
-            this.degree = 0;
+            this.Root = element;
+            this.Degree = 0;
             this.children = new LinkedList<HeapTree>();
         }
 
@@ -97,7 +112,7 @@ public class FibHeap<T> where T : IComparable {
 
         public void Merge(HeapTree tree) {
             this.children.Add(tree);
-            this.degree++;
+            this.Degree++;
         }
     }
 }
