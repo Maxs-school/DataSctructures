@@ -16,4 +16,7 @@ public class FibQueue<T> where T : IComparable {
 
         return item.Item;
     }
+    public T Peek() {
+        return heap.GetSmallest().Item;
+    }
 }

@@ -37,7 +37,7 @@ public class FibQueueTests {
 
     [TestMethod]
     public void PeekTest() {
-        PriorityQueue<int> queue = new PriorityQueue<int>();
+        FibQueue<int> queue = new FibQueue<int>();
         CustomList<int> list = new CustomList<int>();
 
         // Insert them

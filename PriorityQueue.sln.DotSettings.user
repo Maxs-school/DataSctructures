@@ -1,5 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b82f23ed_002Ddfe4_002D4d87_002D8605_002Db3d064087086/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestBasicQueueing" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b82f23ed_002Ddfe4_002D4d87_002D8605_002Db3d064087086/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestBasicQueueing" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;MSTest::46E7062C-4E69-4E15-B772-519C82720124::net7.0::Tests.PriorityQueueTests.TestQueueing&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;MSTest::46E7062C-4E69-4E15-B772-519C82720124::net7.0::Tests.PriorityQueueTests.PeekTest&lt;/TestId&gt;&#xD;
@@ -16,8 +16,6 @@
     &lt;TestId&gt;MSTest::46E7062C-4E69-4E15-B772-519C82720124::net7.0::Tests.PriorityQueueTests.TestBasicQueueing&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e0ade12b_002D4754_002D49c5_002D90fa_002D6b3274ce7603/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="TestQueueing" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;MSTest::46E7062C-4E69-4E15-B772-519C82720124::net7.0::Tests.FibQueueTests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e0ade12b_002D4754_002D49c5_002D90fa_002D6b3274ce7603/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestQueueing" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Project Location="C:\Users\2014364\RiderProjects\PriorityQueue\Tests" Presentation="&amp;lt;Tests&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

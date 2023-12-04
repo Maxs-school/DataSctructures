@@ -3,15 +3,15 @@ namespace MyStructures;
 public class FibHeap<T> where T : IComparable {
     LinkedList<HeapTree> treelist = new LinkedList<HeapTree>();
 
-    private HeapTree? minimumElement;
+    private HeapTree? maxElement;
 
     public void Insert(T element) {
         HeapTree tree = new HeapTree(element);
         this.treelist.Add(tree);
 
 
-        if (this.minimumElement == null || element.CompareTo(this.minimumElement.Root) < 0) {
-            this.minimumElement = tree;
+        if (this.maxElement == null || element.CompareTo(this.maxElement.Root) > 0) {
+            this.maxElement = tree;
         }
     }
 
@@ -22,17 +22,29 @@ public class FibHeap<T> where T : IComparable {
     public void Merge(FibHeap<T> heap) {
         this.Merge(heap.treelist);
 
-        if (heap.minimumElement == null) {
+        if (heap.maxElement == null) {
             throw new NullReferenceException("Cannot merge with an empty heap");
         }
 
-        if (this.minimumElement == null) {
+        if (this.maxElement == null) {
             throw new NullReferenceException("Cannot merge with an empty heap");
         }
 
-        if (heap.minimumElement.Root.CompareTo(this.minimumElement.Root) < 0) {
-            this.minimumElement = heap.minimumElement;
+        if (heap.maxElement.Root.CompareTo(this.maxElement.Root) < 0) {
+            this.maxElement = heap.maxElement;
         }
+    }
+
+    /// <summary>
+    /// Returns the smallest element in the list without removing it
+    /// </summary>
+    /// <returns>The smallest element</returns>
+    /// <exception cref="InvalidOperationException">Thrown if the list is empty</exception>
+    public T GetSmallest() {
+        if (this.maxElement == null) {
+            throw new InvalidOperationException("Cannot get the smallest element from an empty list");
+        }
+        return this.maxElement.Root;
     }
 
     /// <summary>
@@ -45,13 +57,13 @@ public class FibHeap<T> where T : IComparable {
     }
 
     public T RemoveMin() {
-        if (minimumElement == null) {
+        if (maxElement == null) {
             throw new InvalidOperationException("Cannot remove from an empty heap");
 
         }
 
-        T min = minimumElement.Root;
-        var childen = minimumElement.RemoveParent();
+        T min = maxElement.Root;
+        var childen = maxElement.RemoveParent();
 
         if (childen != null) {
             Merge(childen);
