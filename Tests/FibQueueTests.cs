@@ -3,9 +3,6 @@ using MyStructures;
 
 [TestClass]
 public class FibQueueTests {
-    const int Interationcount = 10_000;
-
-
     [TestMethod]
     public void TestQueueing() {
         FibQueue<int> heap = new FibQueue<int>();
@@ -60,6 +57,15 @@ public class FibQueueTests {
 
         for (int i = 0; i < 10000; i++) {
             Assert.AreEqual(expectedItem, queue.Peek());
+        }
+    }
+
+    [TestMethod]
+    public void IsTemportallySafe() {
+        CustomList<double> values = new CustomList<double>();
+
+        for (int i = 0; i < 1000; i++) {
+            values.Add(Math.Floor(Math.Sin(i) * 100));
         }
     }
 }
