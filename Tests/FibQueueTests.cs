@@ -60,12 +60,16 @@ public class FibQueueTests {
         }
     }
 
+    // Largely unimplemented
     [TestMethod]
     public void IsTemportallySafe() {
-        CustomList<double> values = new CustomList<double>();
+        CustomList<int> values = new CustomList<int>();
+
+        var queue = new FibQueue<int>();
 
         for (int i = 0; i < 1000; i++) {
-            values.Add(Math.Floor(Math.Sin(i) * 100));
+            queue.Enqueue(i, (int) Math.Floor(Math.Sin(i)*100f));
+            values.Add(i);
         }
     }
 }
